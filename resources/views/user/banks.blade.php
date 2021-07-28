@@ -379,7 +379,7 @@ use App\Http\Controllers\Globals as Util;
                     data: { account_number: accountNumber.value, bank_code: bankCode.value },
                     type: "GET",
                     beforeSend: function(xhr){
-                        xhr.setRequestHeader('Authorization', 'Bearer {{ env('PAYSTACK_API_KEY') }}');
+                        xhr.setRequestHeader('Authorization', 'Bearer sk_test_004613305b70376c5e50f7234ac87152e1df05ca');
                         xhr.setRequestHeader('Content-Type', 'application/json');
                         xhr.setRequestHeader('Accept', 'application/json');
                     },
