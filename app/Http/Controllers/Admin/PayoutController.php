@@ -96,7 +96,7 @@ class PayoutController extends Controller
             $button = false;
             $button_text = '';
             $subject = "Investment Payout";
-            Mail::to($user->email)->send(new SendMailable($title,$name,$content,$button,$button_text,$subject));
+            // Mail::to($user->email)->send(new SendMailable($title,$name,$content,$button,$button_text,$subject));
 //        }
 
         $investment->update(['paid' => 1]);
@@ -170,7 +170,7 @@ class PayoutController extends Controller
                         $button = false;
                         $button_text = '';
                         $subject = "Investment Payout";
-                        Mail::to($user->email)->send(new SendMailable($title,$name,$content,$button,$button_text,$subject));
+                        // Mail::to($user->email)->send(new SendMailable($title,$name,$content,$button,$button_text,$subject));
 
 //                    }
 
