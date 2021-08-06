@@ -23,6 +23,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
+Route::get('/register', function() {
+    return redirect('/login');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin/forget-password', 'Auth\AdminForgotPasswordController@showLinkRequestForm');
