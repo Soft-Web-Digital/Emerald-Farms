@@ -129,7 +129,7 @@
                                                 @if(strtotime($lastDate) < strtotime(now()))
                                                     <span class="badge badge-success">completed</span>
                                                 @else
-                                                    <span class="badge badge-warning">pending</span>
+                                                    <span class="badge badge-success">Active</span>
                                                 @endif
                                             @endif
                                         </td>
