@@ -1,39 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
-  <component name="ChangeListManager">
-    <list default="true" id="4c3cfea4-d2cf-40a7-a180-c2d4d42ad646" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Providers/GoogleDriveServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
-    </list>
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
-    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
       <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
@@ -177,109 +144,10 @@
       <path value="$PROJECT_DIR$/vendor/psr/cache" />
     </include_path>
   </component>
-  <component name="ProjectId" id="1peNISpaO1EzvfQhp8viGb48lVJ" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\HP\Desktop\SWD\emerald farms\app\resources\fonts" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner scope="XML" />
-      <method v="2" />
-    </configuration>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="4c3cfea4-d2cf-40a7-a180-c2d4d42ad646" name="Default Changelist" comment="" />
-      <created>1615539517968</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1615539517968</updated>
-      <workItem from="1615539520409" duration="28467000" />
-      <workItem from="1615658442552" duration="4902000" />
-      <workItem from="1615832015192" duration="10359000" />
-      <workItem from="1615900877025" duration="46956000" />
-      <workItem from="1616155123812" duration="8816000" />
-      <workItem from="1616403324196" duration="35728000" />
-      <workItem from="1616522420545" duration="64056000" />
-      <workItem from="1616754068110" duration="9390000" />
-      <workItem from="1616780594043" duration="12977000" />
-      <workItem from="1616861550722" duration="23106000" />
-      <workItem from="1616957530055" duration="37362000" />
-      <workItem from="1617175056986" duration="12336000" />
-      <workItem from="1617212356183" duration="53236000" />
-      <workItem from="1617781530872" duration="1046000" />
-      <workItem from="1617882809088" duration="1361000" />
-      <workItem from="1618079851995" duration="7578000" />
-      <workItem from="1618174427456" duration="1460000" />
-      <workItem from="1618220562958" duration="18607000" />
-      <workItem from="1618582308942" duration="4240000" />
-      <workItem from="1618651134115" duration="3101000" />
-      <workItem from="1618822012499" duration="766000" />
-      <workItem from="1618934275814" duration="5109000" />
-      <workItem from="1618999286706" duration="51000" />
-      <workItem from="1619018935240" duration="641000" />
-      <workItem from="1619038221831" duration="679000" />
-      <workItem from="1619041133807" duration="821000" />
-      <workItem from="1619089161326" duration="458000" />
-      <workItem from="1619096000973" duration="793000" />
-      <workItem from="1619463739981" duration="7000" />
-      <workItem from="1619597268784" duration="38000" />
-      <workItem from="1619597388912" duration="3011000" />
-      <workItem from="1619619781188" duration="760000" />
-      <workItem from="1619637679634" duration="3004000" />
-      <workItem from="1619813712536" duration="2490000" />
-      <workItem from="1620026856698" duration="1852000" />
-      <workItem from="1620160963758" duration="319000" />
-      <workItem from="1620209702728" duration="2334000" />
-      <workItem from="1620245581095" duration="1252000" />
-      <workItem from="1620315164528" duration="2072000" />
-      <workItem from="1620652835103" duration="425000" />
-      <workItem from="1622029105412" duration="762000" />
-      <workItem from="1622030190373" duration="473000" />
-      <workItem from="1622315355085" duration="1502000" />
-      <workItem from="1622450991356" duration="16578000" />
-      <workItem from="1622883717504" duration="6422000" />
-      <workItem from="1623063743679" duration="960000" />
-      <workItem from="1623231966134" duration="3301000" />
-      <workItem from="1625840902576" duration="5235000" />
-      <workItem from="1629204847459" duration="4476000" />
-    </task>
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/phpunit.xml" custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" use_configuration_file="true" />
+    </phpunit_settings>
   </component>
 </project>
