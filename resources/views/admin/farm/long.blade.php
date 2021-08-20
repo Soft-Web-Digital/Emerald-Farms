@@ -42,13 +42,49 @@ use App\Http\Controllers\Globals as Util;
 							<label>Price per unit</label>
 							<input type="number" class="form-control" step="any" name="price" required value="{{ $farmlist->price }}" readonly>
 						</div>
-                        <div class="form-group">
-                            <label>Interest rate </label>
-                            <input type="number" class="form-control" name="interest" step="any" required value="{{ $farmlist->interest }}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Number of Milestones</label>
-                            <input type="numeric" class="form-control" name="milestone" required value="{{ $farmlist->milestone }}" readonly>
+                        <div class="form-row" id="milestonesDataField">
+							<div class="col-12 form-group mb-1">
+								<label>Milestones </label>
+							</div>
+							<div class="col-12" id="milestones">
+							@php
+								$interests = json_decode($farmlist->interest);
+							@endphp
+							@if ($farmlist->milestone > 0)
+								@for ($i = 0; $i < $farmlist->milestone; $i++)
+									<div class="row">
+										<div class="col-10 input-group mb-1">
+											<input type="number" value="{{ $interests[$i] ?? '' }}" placeholder="Interest Rate" class="form-control" name="milestones[]" required>
+											<div class="input-group-append">
+												<div class="input-group-text">
+													<i class="fas fa-percentage"></i>
+												</div>
+											</div>
+										</div>
+										<div class="col-2 pb-1 mb-1 d-flex justify-content-end align-items-end form-group">
+											<button type="button" class="btn milestone-field-remove btn-danger"><i class="fa fa-trash"></i></button>
+										</div>
+									</div>
+								@endfor
+							@else
+								<div class="row">
+									<div class="col-10 input-group mb-1">
+										<input type="number" placeholder="Interest Rate" class="form-control" name="milestones[]" required>
+										<div class="input-group-append">
+											<div class="input-group-text">
+												<i class="fas fa-percentage"></i>
+											</div>
+										</div>
+									</div>
+									<div class="col-2 pb-1 mb-1 d-flex justify-content-end align-items-end form-group">
+										<button type="button" class="btn milestone-field-remove btn-danger"><i class="fa fa-trash"></i></button>
+									</div>
+								</div>
+							@endif
+							</div>
+							<div class="col-12 mt-1 mb-2 text-right">
+								<button id="addMilestoneBtn" type="button" class="btn btn-success">Add Milestone <i class="ml-2 fa fa-plus"></i></button>
+							</div>
                         </div>
                         <div class="form-group">
                             <label>Duration in months</label>
@@ -103,15 +139,29 @@ use App\Http\Controllers\Globals as Util;
 							<label>Price per unit</label>
 							<input type="number" step="any" class="form-control" name="price" required>
 						</div>
-                        <div class="form-group">
-                            <label>Interest rate </label>
-                            <input type="number" class="form-control" name="interest" step="any" required>
+						<div class="form-row" id="milestonesDataField">
+							<div class="col-12 form-group mb-1">
+								<label>Milestones </label>
+							</div>
+							<div class="col-12" id="milestones">
+								<div class="row">
+									<div class="col-10 input-group mb-1">
+										<input type="number" placeholder="Interest Rate" class="form-control" name="milestones[]" required>
+										<div class="input-group-append">
+											<div class="input-group-text">
+												<i class="fas fa-percentage"></i>
+											</div>
+										</div>
+									  </div>
+									<div class="col-2 pb-1 mb-1 d-flex justify-content-end align-items-end form-group">
+										<button type="button" class="btn milestone-field-remove btn-danger"><i class="fa fa-trash"></i></button>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 mt-1 mb-2 text-right">
+								<button id="addMilestoneBtn" type="button" class="btn btn-success">Add Milestone <i class="ml-2 fa fa-plus"></i></button>
+							</div>
                         </div>
-                        <div class="form-group">
-                            <label>Number of Milestones </label>
-                            <input type="number" class="form-control" name="milestone" required>
-                        </div>
-
                         <div class="form-group">
                             <label>Duration in Months </label>
                             <input type="number" class="form-control" name="duration" required>
@@ -153,8 +203,35 @@ use App\Http\Controllers\Globals as Util;
 @endsection
 
 @section('foot')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.js" integrity="sha512-bZAXvpVfp1+9AUHQzekEZaXclsgSlAeEnMJ6LfFAvjqYUVZfcuVXeQoN5LhD7Uw0Jy4NCY9q3kbdEXbwhZUmUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-
+	$('#addMilestoneBtn').click(function(e) {
+		$('#milestones').append(`<div class="row">
+			<div class="col-10 input-group mb-1">
+				<input type="number" placeholder="Interest Rate" class="form-control" name="milestones[]" required>
+				<div class="input-group-append">
+					<div class="input-group-text">
+						<i class="fas fa-percentage"></i>
+					</div>
+				</div>
+				</div>
+			<div class="col-2 pb-1 mb-1 d-flex justify-content-end align-items-end form-group">
+				<button type="button" data-key="1" class="btn milestone-field-remove btn-danger"><i class="fa fa-trash"></i></button>
+			</div>
+		</div>`);
+	})
+	$('#milestones').on('click', 'div div .milestone-field-remove', function() {
+		if ($('#milestones').children().length > 1) {
+			$(this).parent().parent().remove();
+		}
+	});
+	function populateFields() {
+		$('#milestones').children().each(function(index) {
+			$(this).find('div input').prop('name', `milestone[${index+1}]`);
+		})
+	}
+</script>
+<script>
      $(document).ready(function () {
          if(/^(iPhone|iPad|iPod)/.test(navigator.platform)){
 

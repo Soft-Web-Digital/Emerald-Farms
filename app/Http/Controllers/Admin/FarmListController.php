@@ -135,6 +135,14 @@ class FarmListController extends Controller
             return redirect()->back()->with('message', '<div class="alert alert-danger alert-dismissible show fade alert-has-icon"><div class="alert-icon"><i class="far fa-lightbulb"></i></div><div class="alert-body"><button class="close" data-dismiss="alert"><span>&times;</span></button>You need to select a category.</div></div>');
         }
 
+        if (count($req->milestones) == 0) {
+            return redirect()->back()->with('message', '<div class="alert alert-danger alert-dismissible show fade alert-has-icon"><div class="alert-icon"><i class="far fa-lightbulb"></i></div><div class="alert-body"><button class="close" data-dismiss="alert"><span>&times;</span></button>You must add at least one milestone</div></div>');
+        }
+
+        if (array_sum($req->milestones) != 100) {
+            return redirect()->back()->with('message', '<div class="alert alert-danger alert-dismissible show fade alert-has-icon"><div class="alert-icon"><i class="far fa-lightbulb"></i></div><div class="alert-body"><button class="close" data-dismiss="alert"><span>&times;</span></button>All milestones interest must sum to 100%</div></div>');
+        }
+
         if(MilestoneFarm::whereTitle($req->title)->exists()){
             return redirect()->back()->with('message', '<div class="alert alert-danger alert-dismissible show fade alert-has-icon"><div class="alert-icon"><i class="far fa-lightbulb"></i></div><div class="alert-body"><button class="close" data-dismiss="alert"><span>&times;</span></button>Farm name already exist. Choose a new name.</div></div>');
         }
@@ -152,8 +160,8 @@ class FarmListController extends Controller
                 'cover'=>$destinationPath."/".$profileImage,
                 'price'=>$req->price,
                 'description'=>$req->description,
-                'interest' => $req->interest,
-                'milestone' => $req->milestone,
+                'interest' => json_encode($req->milestones),
+                'milestone' => count($req->milestones),
                 'duration' => $req->duration,
                 'available_units' => $req->available_units,
                 'category_id' => $req->category_id
@@ -170,7 +178,13 @@ class FarmListController extends Controller
     }
 
     public function editLongFarmlistPost(Request $req){
+        if (count($req->milestones) == 0) {
+            return redirect()->back()->with('message', '<div class="alert alert-danger alert-dismissible show fade alert-has-icon"><div class="alert-icon"><i class="far fa-lightbulb"></i></div><div class="alert-body"><button class="close" data-dismiss="alert"><span>&times;</span></button>You must add at least one milestone</div></div>');
+        }
 
+        if (array_sum($req->milestones) != 100) {
+            return redirect()->back()->with('message', '<div class="alert alert-danger alert-dismissible show fade alert-has-icon"><div class="alert-icon"><i class="far fa-lightbulb"></i></div><div class="alert-body"><button class="close" data-dismiss="alert"><span>&times;</span></button>All milestones interest must sum to 100%</div></div>');
+        }
         $editing = MilestoneFarm::where('id', $req->id)->first();
 
         if ($files = $req->file('cover')) {
@@ -191,8 +205,8 @@ class FarmListController extends Controller
             'close_date' => Carbon::parse($req->close_date)->format('Y-m-d H:i:s'),
             'price'=>$req->price,
             'description'=>$req->description,
-            'interest' => $req->interest,
-            'milestone' => $req->milestone,
+            'interest' => json_encode($req->milestones),
+            'milestone' => count($req->milestones),
             'duration' => $req->duration,
             'available_units' => $req->available_units,
             'category_id' => $req->category_id
