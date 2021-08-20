@@ -139,10 +139,6 @@ class FarmListController extends Controller
             return redirect()->back()->with('message', '<div class="alert alert-danger alert-dismissible show fade alert-has-icon"><div class="alert-icon"><i class="far fa-lightbulb"></i></div><div class="alert-body"><button class="close" data-dismiss="alert"><span>&times;</span></button>You must add at least one milestone</div></div>');
         }
 
-        if (array_sum($req->milestones) != 100) {
-            return redirect()->back()->with('message', '<div class="alert alert-danger alert-dismissible show fade alert-has-icon"><div class="alert-icon"><i class="far fa-lightbulb"></i></div><div class="alert-body"><button class="close" data-dismiss="alert"><span>&times;</span></button>All milestones interest must sum to 100%</div></div>');
-        }
-
         if(MilestoneFarm::whereTitle($req->title)->exists()){
             return redirect()->back()->with('message', '<div class="alert alert-danger alert-dismissible show fade alert-has-icon"><div class="alert-icon"><i class="far fa-lightbulb"></i></div><div class="alert-body"><button class="close" data-dismiss="alert"><span>&times;</span></button>Farm name already exist. Choose a new name.</div></div>');
         }
@@ -182,9 +178,6 @@ class FarmListController extends Controller
             return redirect()->back()->with('message', '<div class="alert alert-danger alert-dismissible show fade alert-has-icon"><div class="alert-icon"><i class="far fa-lightbulb"></i></div><div class="alert-body"><button class="close" data-dismiss="alert"><span>&times;</span></button>You must add at least one milestone</div></div>');
         }
 
-        if (array_sum($req->milestones) != 100) {
-            return redirect()->back()->with('message', '<div class="alert alert-danger alert-dismissible show fade alert-has-icon"><div class="alert-icon"><i class="far fa-lightbulb"></i></div><div class="alert-body"><button class="close" data-dismiss="alert"><span>&times;</span></button>All milestones interest must sum to 100%</div></div>');
-        }
         $editing = MilestoneFarm::where('id', $req->id)->first();
 
         if ($files = $req->file('cover')) {
