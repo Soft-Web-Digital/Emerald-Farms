@@ -37,8 +37,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('backup:clean')->twiceDaily(0, 12);
-        $schedule->command('backup:run --only-db')->twiceDaily(0, 12);
         $schedule->call(function(){
 
             $sid = 'ACc97c82d7cafd672aff75af9ab4bb3057';
