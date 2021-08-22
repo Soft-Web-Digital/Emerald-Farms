@@ -41,9 +41,10 @@
 
         .certificate .name{
             position: absolute !important;
+            text-transform: capitalize;
             top: 480px;
             left: 50%;
-            font-size: 40px;
+            font-size: 38px;
             transform: translateX(-50%);
             font-family: 'Sacramento', cursive;
             color: #03c003;
@@ -91,7 +92,7 @@
         <div style="position: absolute" id="bg"><img src="https://test.emeraldfarms.ng/assets/img/certificates/platinum.png" alt="bg"></div>
     @endif
     <div style="position: absolute" class="name">
-        {{ $name }}
+        {{ ucwords(strtolower($name)) }}
     </div>
     <div style="position: absolute" class="details">
         Has successfully invested in {{ $units }} unit of Emerald Farms ({{ $farm }}) and approved by the Board of

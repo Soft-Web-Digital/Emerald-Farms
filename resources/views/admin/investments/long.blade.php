@@ -20,7 +20,7 @@ use App\Http\Controllers\Globals as Util;
 			<div class="card">
 				<div class="card-header">
 					<h4>Long Term Package Investments</h4>
-                    <a href="#" class="badge badge-success">Export Excel</a>
+                    <a href="{{route('download.transactions', 'milestone-investments')}}" class="badge badge-success">Export Excel</a>
 
                 </div>
 				<div class="card-body">

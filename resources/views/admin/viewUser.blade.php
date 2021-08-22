@@ -225,7 +225,7 @@ use App\Http\Controllers\Globals as Util;
                         <div class="card-body">
                             <h5>Transactions Summary</h5>
                             <ul>
-                                <li><p class="small">Total transactions: <h6>₦{{number_format(\App\Transaction::where('user_id', $user->id)->where('status', 'approved')->sum('amount')) }}</h6></p></li>
+                                <li><p class="small">Total transactions: <h6>₦{{number_format(\App\Transaction::where('user_id', $user->id)->where('status', 'approved')->where('type', '!=', 'transfer')->sum('amount')) }}</h6></p></li>
                                 <li><p class="small">Total withdrawal: <h6>₦{{number_format(\App\Transaction::where('user_id', $user->id)->where('type', 'payouts')->where('status', 'approved')->sum('amount')) }}</h6></p></li>
                                 <li><p class="small">Total deposits: <h6>₦{{number_format(\App\Transaction::where('user_id', $user->id)->where('type', 'deposits')->where('status', 'approved')->sum('amount')) }}</h6></p></li>
                             </ul>
