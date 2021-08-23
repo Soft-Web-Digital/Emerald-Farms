@@ -34,12 +34,27 @@ class MilestoneInvestment extends Model
         return $dates;
     }
 
-    public function milestoneReturns()
+    public function getMilestoneReturn($milestone)
     {
-        $percentage = $this->farm->interest/100;
-        $fullReturns = $this->amount_invested * $percentage;
-        return number_format($fullReturns);
+        $interest = json_decode($this->farm->interest);
+        return $this->amount_invested * ($interest[$milestone] / 100);
     }
+
+    public function getTotalROI()
+    {
+        $total = 0;
+        for ($i=0; $i < $this->farm->milestone; $i++) {
+            $total += $this->getMilestoneReturn($i);
+        }
+        return $total;
+    }
+
+    // public function milestoneReturns()
+    // {
+        // $percentage = $this->farm->interest/100;
+        // $fullReturns = $this->amount_invested * $percentage;
+        // return number_format(10000);
+    // }
 
     public function getPaymentDurationInDays()
     {

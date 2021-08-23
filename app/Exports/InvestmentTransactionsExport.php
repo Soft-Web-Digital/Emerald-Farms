@@ -11,7 +11,6 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
 class InvestmentTransactionsExport implements FromArray, WithHeadings, ShouldAutoSize
 {
-
     /**
      * @inheritDoc
      */

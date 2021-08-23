@@ -53,7 +53,7 @@ class PaidMilestoneNotification extends Notification
                 ->subject('Longterm Investment Payout')
                 ->greeting('Dear '.ucwords($this->name).',')
                 ->line('Your Long-term investment of <b>₦'.number_format($this->investment->amount_invested,2).'</b> in <b>'.ucwords($this->investment->farm->title).'</b> has been fully paid.')
-                ->line('Investment Overview: <br>Amount Invested: ₦'.number_format($this->investment->amount_invested,2).'<br>Return on Investment: ₦'.number_format(implode("", explode(',',$this->investment->amount_invested)) * ($this->investment->farm->interest / 100), 2).'<br>Total Amount Received: ₦'.number_format(implode("", explode(',',$this->investment->amount_invested))+implode("", explode(',',$this->investment->milestoneReturns()))).'<br>Duration: '.$this->investment->getPaymentDurationInDays().' days <br> Milestones: '.$this->investment->farm->milestone.' <br>')
+                ->line('Investment Overview: <br>Amount Invested: ₦'.number_format($this->investment->amount_invested,2).'<br>Return on Investment: ₦'.number_format($this->investment->getTotalROI(), 2).'<br>Total Amount Received: ₦'.number_format($this->investment->getTotalROI() + $this->investment->amount_invested ,2).'<br>Duration: '.$this->investment->getPaymentDurationInDays().' days <br> Milestones: '.$this->investment->farm->milestone.' <br>')
                 ->line('Should you have any questions or complaints, please kindly contact our support team.')
                 ->line('Thank you for choosing Emerald Farms.')
                 ->view('emails.new_custom');
@@ -94,7 +94,7 @@ class PaidMilestoneNotification extends Notification
         if ($this->isFinal){
             return [
                 'body'=>'Your Long-term investment of <b>₦'.number_format($this->investment->amount_invested,2).'</b> in <b>'.ucwords($this->investment->farm->title).'</b> has been fully paid.
-                         Investment Overview: <br>Amount Invested: ₦'.number_format($this->investment->amount_invested,2).'<br>Return on Investment: ₦'.number_format(implode("", explode(',',$this->investment->amount_invested)) * ($this->investment->farm->interest / 100), 2).'<br>Total Amount Received: ₦'.number_format(implode("", explode(',',$this->investment->amount_invested))+implode("", explode(',',$this->investment->milestoneReturns()))).'<br>Duration: '.$this->investment->getPaymentDurationInDays().' days <br> Milestones: '.$this->investment->farm->milestone.' <br>
+                         Investment Overview: <br>Amount Invested: ₦'.number_format($this->investment->amount_invested,2).'<br>Return on Investment: ₦'.number_format($this->investment->getTotalROI(), 2).'<br>Total Amount Received: ₦'.number_format($this->investment->getTotalROI() + $this->investment->amount_invested ,2).'<br>Duration: '.$this->investment->getPaymentDurationInDays().' days <br> Milestones: '.$this->investment->farm->milestone.' <br>
                          Should you have any questions or complaints, please kindly contact our support team.',
                 'icon'=>'<span class="dropdown-item-icon bg-success text-white"> <i class="fas fa-tag"></i></span>',
                 'title'=>'Longterm Investment Payout'

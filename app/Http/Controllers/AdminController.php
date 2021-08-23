@@ -8,6 +8,7 @@ use App\Exports\AllTransactionsExport;
 use App\Exports\AllUsersExport;
 use App\Exports\DepositTransactionsExport;
 use App\Exports\InvestmentTransactionsExport;
+use App\Exports\MilestoneInvestmentExport;
 use App\Exports\PayoutRequestTransactionsExport;
 use App\Exports\PayoutTransactionsExport;
 use App\Exports\PaystackTransactionsExport;
@@ -729,8 +730,7 @@ class AdminController extends Controller
         else {
             $search = $request->input('search.value');
 
-            $posts =  MilestoneInvestment::latest()->where('user','LIKE',"%{$search}%")
-                ->orWhere('amount_invested','LIKE',"%{$search}%")
+            $posts =  MilestoneInvestment::latest()->where('amount_invested','LIKE',"%{$search}%")
                 ->orWhere('maturity_status','LIKE',"%{$search}%")
                 ->orWhere('status','LIKE',"%{$search}%")
                 ->orWhere('units','LIKE',"%{$search}%")
@@ -1772,10 +1772,10 @@ class AdminController extends Controller
                     }
 
                     if (count($post->milestoneDates()) == ($key + 1)){
-                        $nestedData['amount'] = 'NGN'.number_format(implode("", explode(',',$post->amount_invested)) + (implode("", explode(',',$post->milestoneReturns()))) ,2);
+                        $nestedData['amount'] = 'NGN'.number_format(implode("", explode(',',$post->amount_invested)) + (implode("", explode(',',$post->getMilestoneReturn($key)))) ,2);
 //                        $nestedData['amount'] = 'NGN'.number_format(implode("", explode(',',$post->amount_invested)) + (implode("", explode(',',$post->milestoneReturns())) / count($post->milestoneDates())) ,2);
                     }else{
-                        $nestedData['amount'] = 'NGN'.number_format(implode("", explode(',',$post->milestoneReturns())),2);
+                        $nestedData['amount'] = 'NGN'.number_format(implode("", explode(',',$post->getMilestoneReturn($key))),2);
 //                        $nestedData['amount'] = 'NGN'.number_format(implode("", explode(',',$post->milestoneReturns())) / count($post->milestoneDates()),2);
                     }
 
@@ -2039,7 +2039,7 @@ class AdminController extends Controller
     public function downloadTransactions($type)
     {
 
-        $types = ['all','investments','deposits', 'referrals', 'payouts', 'payoutRequests', 'users','verified','unverified','paystack'];
+        $types = ['all','investments','deposits', 'referrals', 'payouts', 'payoutRequests', 'users','verified','unverified','paystack','milestone-investments'];
 
         if(! in_array($type, $types)){
             request()->session()->flash('error', 'Something went wrong!');
@@ -2053,6 +2053,10 @@ class AdminController extends Controller
 
             case 'investments':
                 return $this->downloadExcel(new InvestmentTransactionsExport,'Investment Transactions.xlsx' );
+                break;
+
+            case 'milestone-investments':
+                return $this->downloadExcel(new MilestoneInvestmentExport,'Longterm Investment Transactions.xlsx' );
                 break;
 
             case 'deposits':
@@ -2625,11 +2629,11 @@ class AdminController extends Controller
         $amount = 0;
         if(count($milestones) == (count($paid) + 1)){
             $completed = true;
-            $amount += (int)implode("", explode(',',$investment->amount_invested)) + (int)(implode("", explode(',',$investment->milestoneReturns())));
+            $amount += (int)implode("", explode(',',$investment->amount_invested)) + (int)(implode("", explode(',',$investment->getMilestoneReturn(count($paid)))));
 //            $amount += implode("", explode(',',$investment->amount_invested)) + (implode("", explode(',',$investment->milestoneReturns())) / count($investment->milestoneDates()));
         }else {
             $completed = false;
-            $amount += (int)implode("", explode(',',$investment->milestoneReturns()));
+            $amount += (int)implode("", explode(',',$investment->getMilestoneReturn(count($paid))));
 //            $amount += implode("", explode(',',$investment->milestoneReturns())) / count($investment->milestoneDates());
         }
         $data = [

@@ -41,12 +41,12 @@
                                         </td>
                                         <td>
                                             @if ($loop->last)
-                                                NGN{{number_format(implode("", explode(',',$investment->amount_invested)) + (implode("", explode(',',$investment->milestoneReturns()))) ,2)}}
+                                                NGN{{number_format(implode("", explode(',',$investment->amount_invested)) + (implode("", explode(',',$investment->getMilestoneReturn($key)))) ,2)}}
 {{--                                                NGN{{number_format(implode("", explode(',',$investment->amount_invested)) + (implode("", explode(',',$investment->milestoneReturns())) / count($investment->milestoneDates())) ,2)}}--}}
 
                                                 @php $lastDate = $date @endphp
                                             @else
-                                                NGN{{number_format(implode("", explode(',',$investment->milestoneReturns())),2)}}
+                                                NGN{{number_format(implode("", explode(',',$investment->getMilestoneReturn($key))),2)}}
 {{--                                                NGN{{number_format(implode("", explode(',',$investment->milestoneReturns())) / count($investment->milestoneDates()),2)}}--}}
                                             @endif
                                         </td>
@@ -196,24 +196,26 @@
                                         <td>2</td>
                                         <td>Total ROI</td>
                                         <td>
-                                            NGN {{ number_format(implode("", explode(',',$investment->amount_invested)) * ($investment->farm->interest / 100) * $investment->farm->milestone, 2) }}
+                                            NGN {{ number_format($investment->getTotalROI(), 2) }}
                                         </td>
                                     </tr>
-
+                                    @php
+                                        $interests = json_decode($investment->farm->interest);
+                                    @endphp
+                                    @for ($i=0; $i < $investment->farm->milestone; $i++)
                                     <tr>
-                                        <td>3</td>
-                                        <td>ROI Percentage</td>
+                                        <td>{{ $i + 3 }}</td>
+                                        <td>Milestone {{ $i + 1 }} ROI Percentage</td>
                                         <td>
-                                            {{$investment->farm->interest}}%
+                                            {{$interests[$i]}}%
                                         </td>
                                     </tr>
-
+                                    @endfor
                                     <tr>
-                                        <td>4</td>
+                                        <td>{{ $investment->farm->milestone + 3 }}</td>
                                         <td>Expected returns</td>
                                         <td>
-                                            NGN {{number_format(implode("", explode(',',$investment->amount_invested)) + implode("", explode(',',$investment->amount_invested)) * ($investment->farm->interest / 100) * $investment->farm->milestone)}}
-
+                                            NGN {{number_format($investment->getTotalROI() + $investment->amount_invested ,2)}}
                                         </td>
                                     </tr>
 

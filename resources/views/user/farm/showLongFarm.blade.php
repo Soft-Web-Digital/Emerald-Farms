@@ -38,8 +38,14 @@
                             <p>
                             <strong>Price Per Unit:</strong> {{$farmlist->price}} <br>
                             <strong>Current Available Units:</strong> <span style="">{{$farmlist->available_units}} Units</span> <br>
-                            <strong>Interest:</strong> {{$farmlist->interest}} % <br>
-                            <strong>Milestone:</strong> {{$farmlist->milestone}} month(s)<br>
+                            <strong>Duration:</strong> {{$farmlist->duration}} Month(s)<br>
+                            <strong>Milestones:</strong> {{$farmlist->milestone}}<br>
+                            @php
+								$interests = json_decode($farmlist->interest);
+							@endphp
+                            @for ($i = 0; $i < $farmlist->milestone; $i++)
+                                <strong>Milestone {{ $i + 1 }} Interest:</strong> {{$interests[$i]}} % <br>
+                            @endfor
                             <strong>Farm Opening Date:</strong> {{ $farmlist->start_date->format('M d, Y \a\t h:i A') }}<br>
                             <strong>Investment Start Date:</strong> {{ $farmlist->close_date->format('M d, Y \a\t h:i A') }}<br>
                             </p>
