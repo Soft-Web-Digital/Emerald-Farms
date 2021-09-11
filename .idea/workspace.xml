@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4c3cfea4-d2cf-40a7-a180-c2d4d42ad646" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_09_09_162805_create_batch_payouts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_09_09_162805_create_batch_payouts_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +275,7 @@
       <workItem from="1629204847459" duration="6568000" />
       <workItem from="1629498841535" duration="591000" />
       <workItem from="1629576615170" duration="4377000" />
-      <workItem from="1631195553095" duration="37308000" />
+      <workItem from="1631195553095" duration="38018000" />
     </task>
     <servers />
   </component>
