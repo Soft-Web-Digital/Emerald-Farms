@@ -14,7 +14,7 @@ class CreateBatchPayoutsTable extends Migration
     public function up()
     {
         Schema::create('batch_payouts', function (Blueprint $table) {
-            $table->bigIncrements('id')->nullable();
+            $table->bigIncrements('id');
             $table->string('batch')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
