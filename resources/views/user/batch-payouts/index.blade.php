@@ -35,7 +35,7 @@
                         Emerald Farms Batch Payout
                     </div>
                     <div class="card card-primary">
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
                             <form method="GET">
                                 <div class="form-row">
                                     <div class="form-group col-md-5">
@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <table class="table table-responsive table-bordered">
+                            <table class="table table-bordered">
                                 <thead>
                                 <tr>
                                     <th scope="col">Name</th>
