@@ -29,6 +29,8 @@ Route::get('/register', function() {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/batch-payouts', 'BatchPayoutController@index');
+
 Route::get('/admin/forget-password', 'Auth\AdminForgotPasswordController@showLinkRequestForm');
 Route::post('/email/admin', 'Auth\AdminForgotPasswordController@sendResetLinkEmail');
 Route::get('/reset/admin/{token}', 'Auth\AdminResetPasswordController@showResetForm');
@@ -117,6 +119,11 @@ Route::group(['prefix' => 'admin','middleware' => 'assign.guard:admin,admin/logi
         Route::get('/payouts/{slug}/payout', 'Admin\PayoutController@payoutInvestment')->name('payout.investment');
         Route::get('/payouts/{slug}/payout/all', 'Admin\PayoutController@payoutAllInvestments')->name('payout.investment.all');
 
+        Route::get('/batch-payouts', 'Admin\BatchPayoutController@index');
+        Route::put('/batch-payouts/{batchPayout}/update', 'Admin\BatchPayoutController@update');
+        Route::delete('/batch-payouts/{batchPayout}/delete', 'Admin\BatchPayoutController@destroy');
+        Route::post('/batch-payouts/upload', 'Admin\BatchPayoutController@upload');
+
         Route::get('/payouts/long', 'Admin\PayoutController@longPayout');
         Route::get('/payouts/long/{id}', 'Admin\PayoutController@longPayoutShow');
 
@@ -168,6 +175,7 @@ Route::group(['prefix' => 'admin','middleware' => 'assign.guard:admin,admin/logi
 });
 
 // utilitis
+Route::post("/loadBatchPayouts", 'Admin\BatchPayoutController@loadBatchPayouts');
 Route::post("/loadWallets", 'AdminController@loadWallets');
 Route::post("/loadTransactions", 'AdminController@loadTransactions');
 Route::post("/loadTransactionInvestment", 'AdminController@loadTransactionInvestments');

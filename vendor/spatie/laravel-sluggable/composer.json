@@ -1,0 +1,39 @@
+{
+    "name": "spatie/laravel-sluggable",
+    "description": "Generate slugs when saving Eloquent models",
+    "keywords": [
+        "spatie",
+        "laravel-sluggable"
+    ],
+    "homepage": "https://github.com/spatie/laravel-sluggable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Freek Van der Herten",
+            "email": "freek@spatie.be",
+            "homepage": "https://spatie.be",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "^7.4",
+        "illuminate/database": "^6.0",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spatie\\Sluggable\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spatie\\Sluggable\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}

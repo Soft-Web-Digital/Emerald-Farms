@@ -164,6 +164,10 @@
                                 </ul>
                             </li>
 
+                            <li class="dropdown @yield('batch-payouts')">
+                                <a href="/admin/batch-payouts" class="nav-link"><i data-feather="credit-card"></i><span>Batch Payouts</span></a>
+                            </li>
+
 
 {{--                            <li class="dropdown @yield('newsletter')">--}}
 {{--                                <a href="{{route('news.letter')}}" class="nav-link "><i data-feather="sliders"></i><span>News Letter</span></a>--}}

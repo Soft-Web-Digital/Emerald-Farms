@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Imports;
+
+use App\BatchPayout;
+use Maatwebsite\Excel\Concerns\ToModel;
+
+class BatchPayoutImport implements ToModel
+{
+    /**
+    * @param array $row
+    *
+    * @return \Illuminate\Database\Eloquent\Model|null
+    */
+    public function model(array $row)
+    {
+        return new BatchPayout([
+            'batch' => $row[0] ?? null,
+            'name' => $row[1] ?? null,
+            'email' => $row[2] ?? null,
+            'phone' => $row[3] ?? null,
+            'units' => $row[4] ?? null,
+            'amount_invested' => $row[5] ?? null,
+            'expected_returns' => $row[6] ?? null,
+            'farm_cycle' => $row[7] ?? null,
+            'payment_date' => $row[8] ?? null,
+            'queue' => $row[9] ?? null,
+        ]);
+    }
+}
