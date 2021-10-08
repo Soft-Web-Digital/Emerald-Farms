@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\BatchPayout;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 
-class BatchPayoutImport implements ToModel
+class BatchPayoutImport implements ToModel, WithCalculatedFormulas
 {
     /**
     * @param array $row
@@ -23,7 +24,7 @@ class BatchPayoutImport implements ToModel
             'amount_invested' => $row[5] ?? null,
             'expected_returns' => $row[6] ?? null,
             'farm_cycle' => $row[7] ?? null,
-            'payment_date' => $row[8] ?? null,
+            'payment_date' => $row[8] ? \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject((float)$row[8]) : null,
             'queue' => $row[9] ?? null,
         ]);
     }
