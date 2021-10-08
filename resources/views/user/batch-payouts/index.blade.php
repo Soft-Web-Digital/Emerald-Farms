@@ -77,7 +77,7 @@
                                                 <td>{{ $payout['email'] }}</td>
                                                 <td>{{ $payout['queue'] }}</td>
                                                 <td>{{ $payout['farm_cycle'] }}</td>
-                                                <td>{{ date('Y-m-d', strtotime($payout['payment_date'])) }}</td>
+                                                <td>{{ date('M-Y', strtotime($payout['payment_date'])) }}</td>
                                                 <td>{{ '₦ '.number_format((float)$payout['expected_returns']) }}</td>
                                             </tr>
                                         @endforeach
