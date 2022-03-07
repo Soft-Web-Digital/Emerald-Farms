@@ -133,7 +133,7 @@ class BatchPayoutController extends Controller
                 $nestedData['amount_invested'] = '₦ '.number_format((float)$payout['amount_invested']);
                 $nestedData['expected_returns'] = '₦ '.number_format((float)$payout['expected_returns']);
                 $nestedData['farm_cycle'] = $payout['farm_cycle'];
-                $nestedData['payment_date'] = date('M-Y', strtotime($payout['payment_date']));
+                $nestedData['payment_date'] = $payout['payment_date'];
                 $nestedData['queue'] = $payout['queue'];
                 $nestedData['action'] = '<div class="dropdown show">
                                           <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
