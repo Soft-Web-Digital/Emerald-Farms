@@ -10,7 +10,7 @@ $adm = Utils::getAdmin();
 @section('content')
     @if(isset($adm) && $adm->id != '')
     <script>
-    addCSRFAndProceed("https://app.emeraldfarms.ng/admin");
+    addCSRFAndProceed("http://127.0.0.1:8001/admin");
     function addCSRFAndProceed (url) {
         window.location.href = url + '?token=' + getCSRFTokenAndValue();
     }

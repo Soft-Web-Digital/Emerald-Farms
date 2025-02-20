@@ -166,7 +166,7 @@ return [
          * Package Service Providers...
          */
         Creativeorange\Gravatar\GravatarServiceProvider::class,
-        NotificationChannels\Jusibe\JusibeServiceProvider::class,
+        // NotificationChannels\Jusibe\JusibeServiceProvider::class,
         niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
 
         /*
